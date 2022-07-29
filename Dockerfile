@@ -20,6 +20,7 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 COPY mvs /opt/tk4/mvs
+RUN chmod 0755 /opt/tk4/mvs
 
 CMD ["/opt/tk4/mvs"]
 
