@@ -20,16 +20,17 @@ jobs:
           SLACK_TITLE: ${{ env.GITHUB_SHA }}
       - name: test env
         run: echo "GITHUB_SHA=${GITHUB_SHA}"
-      - name: Install buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1
-        with:
-          version: latest
+      # - name: Install buildx
+      #   id: buildx
+      #   uses: crazy-max/ghaction-docker-buildx@v1
+      #   with:
+      #     version: latest
       - name: Login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build the image
         run: |
-          docker buildx build --push \
+          # docker buildx build --push \
+          docker build --push \
           --tag ericsperano/mvs3.8j-tk4:latest \
           --tag ericsperano/mvs3.8j-tk4:${{github.sha}} \
           --platform linux/amd64,linux/arm64 .
