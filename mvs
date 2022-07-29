@@ -30,4 +30,4 @@ if [[ $REP101A == 'specific' && $CMD101A == '' ]];then export CMD101A=02;fi
 # IPL OS/VS2-MVS 3.8j
 #
 export HERCULES_RC=/opt/tk4/scripts/ipl.rc
-/opt/tk4/hercules/linux/arm/bin/hercules -d -f /opt/tk4/conf/tk4-.cnf >/opt/tk4/log/3033.log
+/opt/tk4/hercules/${system}/${arch}/bin/hercules -d -f /opt/tk4/conf/tk4-.cnf
