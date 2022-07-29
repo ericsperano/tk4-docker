@@ -26,9 +26,9 @@ jobs:
         run: |
           docker build \
           -t ericsperano/mvs3.8j-tk4:${{github.sha}} \
-          -t ericsperano/mvs3.8j-tk4:latest .\
-          docker push ericsperano/mvs3.8j-tk4:${{github.sha}} \
-          docker push ericsperano/mvs3.8j-tk4:latest
+          -t ericsperano/mvs3.8j-tk4:latest . \
+          && docker push ericsperano/mvs3.8j-tk4:${{github.sha}} \
+          && docker push ericsperano/mvs3.8j-tk4:latest
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
