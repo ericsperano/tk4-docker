@@ -7,6 +7,7 @@ RUN apt-get update && \
             unzip \
             wget \
             c3270 \
+            binutils \
             && \
     wget http://wotho.ethz.ch/tk4-/tk4-_v1.00_current.zip && \
     unzip tk4-_v1.00_current.zip && rm tk4-_v1.00_current.zip && \
