@@ -12,10 +12,11 @@
 # set environment
 #
 a=`uname -m`
-echo "1) ${a:0:3}"
-if [[ ${a:0:3} == 'arm' ]];then
-   hf=`readelf -A /proc/self/exe | grep Tag_ABI_VFP_args`
-   if [[ ${hf:2:3} == 'Tag' ]];then arch='arm';else arch='arm_softfloat';fi
+echo "a=${a}"
+if [[ ${a} == 'aarch64' ]];then
+   arch='arm'
+   #hf=`readelf -A /proc/self/exe | grep Tag_ABI_VFP_args`
+   #if [[ ${hf:2:3} == 'Tag' ]];then arch='arm';else arch='arm_softfloat';fi
 else if [[ $a == 'x86_64' ]];then arch=64;else arch=32;fi;fi
 echo "arch=$arch"
 system=`uname -s | awk '{print tolower($0)}'`
