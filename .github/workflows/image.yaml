@@ -24,8 +24,9 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build the image
         run: |
-          docker build ericsperano/mvs3.8j-tk4:${{github.sha}} .\
-          docker tag ericsperano/mvs3.8j-tk4:${{github.sha}} ericsperano/mvs3.8j-tk4:latest \
+          docker build \
+          -t ericsperano/mvs3.8j-tk4:${{github.sha}} \
+          -t ericsperano/mvs3.8j-tk4:latest .\
           docker push ericsperano/mvs3.8j-tk4:${{github.sha}} \
           docker push ericsperano/mvs3.8j-tk4:latest
       - name: Slack Notification
