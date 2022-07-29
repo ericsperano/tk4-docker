@@ -1,0 +1,41 @@
+name: build
+
+#https://docs.github.com/en/actions/advanced-guides/storing-workflow-data-as-artifacts
+
+on:
+  push:
+    branches: [master, dev]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: "#dev"
+          SLACK_USERNAME: "github-tk4-docker"
+          SLACK_TITLE: ${{ env.GITHUB_SHA }}
+      - name: test env
+        run: echo "GITHUB_SHA=${GITHUB_SHA}"
+      - name: Install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+      - name: Login to docker hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: Build the image
+        run: |
+          docker buildx build --push \
+          --tag ericsperano/tk4:latest \
+          --tag ericsperano/tk4:${{github.sha}} \
+          --platform linux/amd64,linux/arm64 .
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: "#dev"
+          SLACK_USERNAME: "github"
