@@ -28,8 +28,8 @@ jobs:
       - name: Build the image
         run: |
           docker buildx build --push \
-          --tag ericsperano/yfh:latest \
-          --tag ericsperano/yfh:${{github.sha}} \
+          --tag ericsperano/mvs3.8j-tk4:latest \
+          --tag ericsperano/mvs3.8j-tk4:${{github.sha}} \
           --platform linux/amd64,linux/arm64 .
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
