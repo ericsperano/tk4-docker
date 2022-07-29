@@ -19,6 +19,8 @@ RUN apt-get update -y && \
             && \
     rm -rf /var/lib/apt/lists/*
 
+COPY mvs /opt/tk4/mvs
+
 CMD ["/opt/tk4/mvs"]
 
 EXPOSE 3270
