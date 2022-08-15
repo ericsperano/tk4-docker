@@ -24,6 +24,8 @@ COPY mvs /opt/tk4/mvs
 COPY setup-dasd /opt/tk4/setup-dasd
 RUN chmod 0755 /opt/tk4/mvs /opt/tk4/setup-dasd
 
+#VOLUME /opt/tk4/dasd
+
 CMD ["/opt/tk4/mvs"]
 
 EXPOSE 3270

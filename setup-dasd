@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -z "$(/bin/ls -A /opt/tk4/dasd)" ]; then
+if [ -z "$(/bin/ls -A /opt/tk4/dasd.dest)" ]; then
   echo "Setting up DASD directory on persistent volume claim."
-  cp -rfv /opt/tk4/dasd.source/* /opt/tk4/dasd/
+  cp -rfv /opt/tk4/dasd/* /opt/tk4/dasd.dest/
 else
-  echo "DASD directory already setup."
+  echo "DASD directory on persistent volume claim already setup."
 fi
