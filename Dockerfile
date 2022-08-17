@@ -25,6 +25,7 @@ COPY mvs /opt/tk4/mvs
 COPY setup-dasd /opt/tk4/setup-dasd
 RUN chmod 0755 /opt/tk4/mvs /opt/tk4/setup-dasd
 COPY local_conf/01 /opt/tk4/local_conf/01
+COPY local_scripts/01 /opt/tk4/local_scripts/01
 
 #TODO autostart ftpd (/START ftpd,srvconf=2100)
 #VOLUME /opt/tk4/dasd
