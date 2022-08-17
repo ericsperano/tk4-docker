@@ -1,0 +1,2 @@
+* Starting FTP daemon
+start ftpd,srvport=2100
