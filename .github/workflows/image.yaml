@@ -36,4 +36,5 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: "#dev"
-          SLACK_USERNAME: "github"
+          SLACK_USERNAME: "github-tk4-docker"
+          SLACK_TITLE: "Build completed: ${{ env.GITHUB_SHA }}"
